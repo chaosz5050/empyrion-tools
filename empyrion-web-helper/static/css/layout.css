@@ -35,7 +35,7 @@ header {
 }
 
 h1 {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xl);
     font-size: 2em;
     display: flex;
     align-items: center;
@@ -43,9 +43,17 @@ h1 {
 }
 
 .header-icon {
-    width: 2.475em;
-    height: 2.475em;
+    width: 3.5em;
+    height: 3.5em;
     vertical-align: middle;
+}
+
+.version-inline {
+    font-size: 0.5em;
+    font-weight: normal;
+    color: var(--text-secondary);
+    margin-left: var(--space-sm);
+    vertical-align: baseline;
 }
 
 .subtitle {
