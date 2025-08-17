@@ -2,22 +2,26 @@
 
 [![Platform](https://img.shields.io/badge/Platform-Linux-blue?style=for-the-badge&logo=linux)](https://www.linux.org/)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-green?style=for-the-badge&logo=python)](https://www.python.org/)
-[![Version](https://img.shields.io/badge/Version-1.0.0-orange?style=for-the-badge)](https://github.com/chaosz5050/empyrion-tools/tree/main/EmpyrionScenarioEditor)
+[![Status](https://img.shields.io/badge/Status-Concept-yellow?style=for-the-badge)](https://github.com/chaosz5050/empyrion-tools/tree/main/EmpyrionScenarioEditor)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-red?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-A web-based scenario editor for Empyrion Galactic Survival. Edit scenario files, configure game options, and manage galaxy settings through an intuitive web interface.
+> **⚠️ CONCEPT PROJECT**: This is an early development concept for a web-based scenario editor for Empyrion Galactic Survival. The tool is not yet ready for production use.
 
-## ✨ Features
+**Planned Features**: Edit scenario files, configure game options, and manage galaxy settings through an intuitive web interface.
 
-- **Scenario File Management** - Edit and view scenario configuration files
-- **Game Options Editor** - Configure game settings through a web interface
-- **Galaxy Viewer** - Visual representation of galaxy configurations
-- **File Browser** - Navigate and manage scenario files easily
-- **Dark Theme** - Professional dark interface for extended editing sessions
-- **Real-time Editing** - Live editing with immediate feedback
-- **Security Features** - Safe file handling and input validation
+## ✨ Planned Features
 
-## 🚀 Quick Start
+- **Scenario File Management** - Edit and view scenario configuration files (In Development)
+- **Game Options Editor** - Configure game settings through a web interface (Planned)
+- **Galaxy Viewer** - Visual representation of galaxy configurations (Concept)
+- **File Browser** - Navigate and manage scenario files easily (In Development)
+- **Dark Theme** - Professional dark interface for extended editing sessions (Implemented)
+- **Real-time Editing** - Live editing with immediate feedback (Planned)
+- **Security Features** - Safe file handling and input validation (Partial)
+
+## 🚀 Development Setup
+
+> **Note**: This is a concept project and may have incomplete functionality.
 
 ### Prerequisites
 
@@ -38,7 +42,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Running the Editor
+### Running the Development Version
 
 ```bash
 # Start the web application
@@ -47,14 +51,18 @@ python app.py
 # Access at http://localhost:5000
 ```
 
-## 🔧 Usage
+> **⚠️ Warning**: This is development code and may not function as expected.
 
-1. **Start the Application** - Run `python app.py`
-2. **Open Web Browser** - Navigate to `http://localhost:5000`
-3. **Browse Scenarios** - Use the file browser to navigate scenario directories
-4. **Edit Files** - Click on files to edit them directly in the web interface
-5. **Configure Game Options** - Use the game options manager for setting adjustments
-6. **View Galaxy** - Use the galaxy viewer to visualize scenario layouts
+## 🔧 Current Development Status
+
+This project is in early concept/development phase. Current functionality may include:
+
+1. **Basic Application Framework** - Flask-based web application structure
+2. **File System Access** - Basic file browsing capabilities  
+3. **Template System** - HTML templates for future UI development
+4. **Logging Infrastructure** - Development logging and debugging tools
+
+> **⚠️ Important**: Many features listed below are planned but not yet implemented.
 
 ## 📁 Project Structure
 
