@@ -1,8 +1,11 @@
 # 🚀 Empyrion Resource Location Tracker
 
-A web-based resource tracking tool for Empyrion - Galactic Survival. Track mining locations, danger levels, and distances across sectors, planets, and moons. Perfect for server admins and players who want to share resource information with their community.
+[![Platform](https://img.shields.io/badge/Platform-Linux-blue?style=for-the-badge&logo=linux)](https://www.linux.org/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-green?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Version](https://img.shields.io/badge/Version-1.0.0-orange?style=for-the-badge)](https://github.com/chaosz5050/empyrion-tools/tree/main/EmpyrionResourceNotebook)
+[![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-red?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-![Empyrion Resource Tracker](https://img.shields.io/badge/Empyrion-Resource%20Tracker-blue?style=for-the-badge&logo=spacex)
+A web-based resource tracking tool for Empyrion - Galactic Survival. Track mining locations, danger levels, and distances across sectors, planets, and moons. Perfect for server admins and players who want to share resource information with their community.
 
 ## ✨ Features
 

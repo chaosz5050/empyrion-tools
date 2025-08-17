@@ -1,5 +1,10 @@
 # Empyrion Tools Collection
 
+[![Platform](https://img.shields.io/badge/Platform-Linux-blue?style=for-the-badge&logo=linux)](https://www.linux.org/)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-green?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Tools](https://img.shields.io/badge/Tools-3%20Available-orange?style=for-the-badge)](https://github.com/chaosz5050/empyrion-tools)
+[![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-red?style=for-the-badge)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 A collection of Python-based server management and utility tools for Empyrion Galactic Survival servers.
 
 ## 🛠️ Available Tools
