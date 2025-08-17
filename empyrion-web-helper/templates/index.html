@@ -1,0 +1,33 @@
+<!-- FILE LOCATION: /templates/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Players Panel (Default) -->
+    {% include 'tabs/players.html' %}
+    
+    <!-- Entities Panel -->
+    {% include 'tabs/entities.html' %}
+    
+    <!-- Items Config Panel -->
+    {% include 'tabs/itemsconfig.html' %}
+    
+    <!-- Wipe Panel -->
+    {% include 'tabs/wipe.html' %}
+    
+    <!-- GameOptions Panel -->
+    {% include 'tabs/gameoptions.html' %}
+    
+    <!-- ServerConfig Panel -->
+    {% include 'tabs/serverconfig.html' %}
+    
+    <!-- Messaging Panel -->
+    {% include 'tabs/messaging.html' %}
+    
+    <!-- Logs Panel -->
+    {% include 'tabs/logs.html' %}
+    
+    <!-- Settings Panel -->
+    {% include 'tabs/settings.html' %}
+    
+    {% include 'partials/credential_modal.html' %}
+{% endblock %}

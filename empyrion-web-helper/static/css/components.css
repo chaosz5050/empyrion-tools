@@ -1,0 +1,1065 @@
+/* FILE LOCATION: /static/css/components.css */
+/* Component Library - Systematized with Design System Variables */
+
+/* ========================================
+   BUTTONS & INTERACTIVE ELEMENTS
+   ======================================== */
+
+/* Tab Navigation Buttons */
+.tab-button {
+    background: none;
+    border: none;
+    padding: var(--space-md) var(--space-xl);
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tab-button:hover {
+    color: var(--text-primary);
+    background-color: var(--hover-overlay);
+}
+
+.tab-button.active {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+}
+
+/* Button System - Extends btn-base from base.css */
+button {
+    /* Inherits all properties from .btn-base - apply as class for systematic approach */
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
+    border: none;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--accent-blue);
+    opacity: 0.8;
+}
+
+button:disabled {
+    background-color: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Button Variants - Systematic Approach (extends .btn-base) */
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-blue);
+    opacity: 0.8;
+}
+
+.btn-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.btn-danger {
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+}
+
+.btn-danger:hover {
+    background-color: var(--accent-red);
+    opacity: 0.8;
+}
+
+.btn-success {
+    background-color: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.btn-success:hover {
+    background-color: var(--accent-green);
+    opacity: 0.8;
+}
+
+/* Specialized Button Types - Use .btn-base as foundation */
+.btn-test {
+    background-color: var(--accent-orange);
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    font-size: 12px;
+}
+
+.btn-test:hover {
+    background-color: var(--accent-orange);
+    opacity: 0.8;
+}
+
+.btn-add {
+    background-color: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.btn-add:hover {
+    background-color: var(--accent-green);
+    opacity: 0.8;
+}
+
+/* Konsole Button System - Extends .btn-base concept */
+.konsole-btn {
+    padding: var(--space-sm) var(--space-xl);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.konsole-btn-primary {
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+.konsole-btn-primary:hover {
+    background-color: var(--accent-blue);
+    opacity: 0.8;
+}
+
+.konsole-btn-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.konsole-btn-secondary:hover {
+    background-color: var(--bg-primary);
+    border-color: var(--accent-blue);
+}
+
+.konsole-btn-danger {
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+}
+
+.konsole-btn-danger:hover {
+    background-color: var(--accent-red);
+    opacity: 0.8;
+}
+
+/* Action Buttons (with tooltips) */
+.action-btn {
+    background: none;
+    border: none;
+    padding: var(--space-sm) var(--space-sm);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.action-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.action-btn.kick {
+    color: var(--accent-orange);
+}
+
+.action-btn.ban {
+    color: var(--accent-red);
+}
+
+.action-btn.unban {
+    color: var(--accent-green);
+}
+
+.action-btn:hover {
+    background-color: var(--hover-overlay-light);
+}
+
+/* Tooltip styles for action buttons */
+.action-btn::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 1000;
+    border: 1px solid var(--border-color);
+}
+
+.action-btn:hover::after {
+    opacity: 1;
+}
+
+/* Password Toggle Button */
+.konsole-password-toggle {
+    position: absolute;
+    right: var(--space-sm);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: var(--space-xs);
+    font-size: 14px;
+}
+
+.konsole-password-toggle:hover {
+    color: var(--text-primary);
+}
+
+/* Pagination Buttons */
+.pagination-buttons {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.pagination-buttons button {
+    background-color: var(--hover-overlay-light);
+    border: 1px solid var(--border-hover);
+    color: var(--text-primary);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.pagination-buttons button:hover:not(:disabled) {
+    background-color: var(--hover-overlay-medium);
+    border-color: var(--accent-blue);
+}
+
+.pagination-buttons button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   FORMS & INPUTS - All extend .form-base concept
+   ======================================== */
+
+/* Base Input Styles - Use .form-base as foundation */
+input, select, textarea {
+    /* Inherits all properties from .form-base - apply as class for systematic approach */
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+/* Specialized Input Types - All extend .form-base concept */
+.konsole-search-input {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    color: var(--text-primary);
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.konsole-search-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.konsole-input {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.konsole-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.filter-input {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    color: var(--text-primary);
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.filter-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.message-input {
+    flex: 1;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.message-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.message-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.schedule-select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.schedule-select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.setting-input {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.setting-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.log-lines-select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.log-lines-select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+/* Pagination Size Select */
+.pagination-size select {
+    background-color: var(--hover-overlay-light);
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.pagination-size select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.pagination-size select option {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: var(--space-xs) var(--space-sm);
+}
+
+/* Cell Editor - Special case for inline editing */
+.cell-editor {
+    width: 100%;
+    padding: var(--space-xs) var(--space-sm);
+    border: 2px solid var(--accent-blue);
+    border-radius: var(--radius-sm);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.cell-editor:focus {
+    outline: none;
+    border-color: var(--accent-green);
+}
+
+/* Form Components - Systematic Spacing */
+.konsole-form-group {
+    margin-bottom: var(--space-xl);
+}
+
+.konsole-form-group label {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+    font-size: 0.9em;
+}
+
+.konsole-help-text {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.8em;
+    margin-top: var(--space-xs);
+    font-style: italic;
+}
+
+/* Custom Checkbox - Systematic Design */
+.konsole-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.konsole-checkbox {
+    display: none;
+}
+
+.konsole-checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-right: var(--space-md);
+    position: relative;
+    transition: all 0.2s;
+}
+
+.konsole-checkbox:checked + .konsole-checkbox-custom {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.konsole-checkbox:checked + .konsole-checkbox-custom::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Form Input Containers - Systematic Spacing */
+.message-input-container {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.schedule-input-row {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.konsole-password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Modal Input - Extends .form-base concept */
+.modal-body input[type="text"] {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.modal-body input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+/* ========================================
+   MODALS - Systematic Design
+   ======================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--panel-bg);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    max-width: 400px;
+    width: 90%;
+    box-shadow: var(--shadow-medium);
+}
+
+.modal-header {
+    color: var(--accent-blue);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: var(--space-lg);
+}
+
+.modal-body {
+    margin-bottom: var(--space-xl);
+}
+
+.modal-body label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    color: var(--text-secondary);
+}
+
+.modal-footer {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: flex-end;
+}
+
+/* ========================================
+   TABLES - Systematic Design
+   ======================================== */
+
+/* Player Table */
+.player-table-container {
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.player-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.player-table th {
+    background-color: var(--bg-primary);
+    padding: var(--space-md) var(--space-sm);
+    text-align: left;
+    font-weight: bold;
+    color: var(--accent-blue);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.player-table td {
+    padding: var(--space-md) var(--space-sm);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.player-table tr:hover {
+    background-color: var(--hover-overlay);
+}
+
+.player-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Message History Table */
+.message-history-container {
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.message-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.message-history-table th {
+    background-color: var(--bg-secondary);
+    padding: var(--space-md) var(--space-sm);
+    text-align: left;
+    font-weight: bold;
+    color: var(--accent-blue);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.message-history-table td {
+    padding: var(--space-md) var(--space-sm);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.message-history-table tr:hover {
+    background-color: var(--hover-overlay);
+}
+
+.message-history-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Entity Table */
+.entity-table-container {
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.entity-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.entity-table th {
+    background-color: var(--bg-primary);
+    padding: var(--space-md) var(--space-sm);
+    text-align: left;
+    font-weight: bold;
+    color: var(--accent-blue);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.entity-table td {
+    padding: var(--space-md) var(--space-sm);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.entity-table tr:hover {
+    background-color: var(--hover-overlay);
+}
+
+.entity-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Items Config Table */
+.itemsconfig-table-container {
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    overflow-x: auto;
+}
+
+.itemsconfig-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+.itemsconfig-table th {
+    background-color: var(--bg-primary);
+    padding: var(--space-md) var(--space-sm);
+    text-align: left;
+    font-weight: bold;
+    color: var(--accent-blue);
+    border-bottom: 2px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.itemsconfig-table td {
+    padding: var(--space-md) var(--space-sm);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.itemsconfig-table tr:hover {
+    background-color: var(--hover-overlay);
+}
+
+.itemsconfig-table tr:last-child td {
+    border-bottom: none;
+}
+
+.modified-row {
+    background-color: rgba(255, 204, 0, 0.1);
+    border-left: 3px solid var(--accent-orange);
+}
+
+/* Editable Cell */
+.editable-cell {
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.editable-cell:hover {
+    background-color: var(--hover-overlay-light);
+}
+
+/* Table-related styling classes - Systematic Approach */
+.player-name {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.player-steam-id {
+    font-family: monospace;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.player-status {
+    font-weight: bold;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.player-status.online {
+    background-color: var(--online-color);
+    color: var(--text-primary);
+}
+
+.player-status.offline {
+    background-color: var(--offline-color);
+    color: var(--text-primary);
+}
+
+.player-faction {
+    color: var(--text-secondary);
+}
+
+.player-ip {
+    color: var(--text-secondary);
+}
+
+.player-country {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.player-playfield {
+    color: var(--text-secondary);
+}
+
+.player-last-seen {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+.player-actions {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+}
+
+/* Entity table styling - Systematic Badges */
+.entity-id {
+    font-family: monospace;
+    font-size: 0.9em;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+.entity-type {
+    font-weight: bold;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.entity-type.astvoxel {
+    background-color: #8B4513;
+    color: var(--text-primary);
+}
+
+.entity-type.ba {
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+.entity-type.cv {
+    background-color: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.entity-type.sv {
+    background-color: var(--accent-orange);
+    color: var(--text-primary);
+}
+
+.entity-name {
+    color: var(--text-primary);
+}
+
+.entity-playfield {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Items config table styling - Systematic Badges */
+.item-type {
+    font-weight: bold;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.item-type.template {
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+.item-type.item {
+    background-color: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.item-id {
+    font-family: monospace;
+    font-size: 0.9em;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+.item-name {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.item-template {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.item-status {
+    font-size: 0.9em;
+}
+
+/* Message history table styling - Systematic Badges */
+.message-type {
+    font-weight: bold;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.message-type.manual {
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+.message-type.welcome {
+    background-color: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.message-type.goodbye {
+    background-color: var(--accent-orange);
+    color: var(--text-primary);
+}
+
+.message-type.scheduled {
+    background-color: #9966cc;
+    color: var(--text-primary);
+}
+
+.message-status {
+    font-weight: bold;
+}
+
+.message-status.success {
+    color: var(--accent-green);
+}
+
+.message-status.failed {
+    color: var(--accent-red);
+}
+
+.message-text {
+    max-width: 300px;
+    word-wrap: break-word;
+    color: var(--text-primary);
+}
+
+.message-timestamp {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+/* ========================================
+   PAGINATION COMPONENT - Systematic Design
+   ======================================== */
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    background-color: var(--hover-overlay);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    font-size: 14px;
+}
+
+.pagination-info {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.pagination-size {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.pagination-size label {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN FOR COMPONENTS - Systematic Spacing
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Button adjustments */
+    .tab-navigation {
+        flex-wrap: wrap;
+    }
+    
+    /* Form adjustments */
+    .message-input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .schedule-input-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    /* Modal adjustments */
+    .modal-content {
+        width: 95%;
+        margin: var(--space-md);
+    }
+    
+    /* Table adjustments - Systematic Spacing */
+    .player-table,
+    .entity-table,
+    .message-history-table,
+    .itemsconfig-table {
+        font-size: 12px;
+    }
+    
+    .player-table th,
+    .player-table td,
+    .entity-table th,
+    .entity-table td,
+    .message-history-table th,
+    .message-history-table td,
+    .itemsconfig-table th,
+    .itemsconfig-table td {
+        padding: var(--space-sm) var(--space-sm);
+    }
+    
+    /* Pagination adjustments - Systematic Spacing */
+    .pagination-controls {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+    }
+    
+    .pagination-buttons {
+        justify-content: center;
+    }
+    
+    .pagination-buttons button {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 11px;
+    }
+    
+    /* Hide country column on mobile for better UX */
+    .player-table th:nth-child(6),
+    .player-table td:nth-child(6) {
+        display: none;
+    }
+}

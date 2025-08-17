@@ -1,0 +1,107 @@
+<!-- FILE LOCATION: /templates/partials/header.html -->
+<header>
+    <h1>
+        <img src="/static/ewh_icon.png" alt="Empyrion Web Helper" class="header-icon"> 
+        Empyrion Web Helper
+    </h1>
+    <p class="subtitle">v0.6.3</p>
+    
+    <div class="header-controls">
+        <!-- Service Status -->
+        <div class="control-group">
+            <label>Server Monitoring:</label>
+            <span class="service-status-text" id="serviceStatusText" title="Background service monitors player activity and sends scheduled messages">Stopped</span>
+        </div>
+        
+        
+        <!-- Connection Status with Tooltips -->
+        <div class="control-group">
+            <span class="connection-status" id="rconStatus" title="Click to see RCON details">RCON: Checking...</span>
+            <span class="connection-status" id="ftpStatus" title="Click to see FTP details">FTP: Checking...</span>
+        </div>
+    </div>
+</header>
+
+<script>
+// Enhanced connection status management
+let statusUpdateInProgress = false;
+
+function updateConnectionStatus() {
+    if (statusUpdateInProgress) return; // Prevent multiple simultaneous updates
+    statusUpdateInProgress = true;
+    
+    fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+            const rconStatusEl = document.getElementById('rconStatus');
+            const serviceStatusEl = document.getElementById('serviceStatusText');
+            const refreshBtn = document.getElementById('refreshDataBtn');
+
+            // Update service status
+            if (data.service_running) {
+                serviceStatusEl.textContent = 'Running';
+                serviceStatusEl.style.color = 'var(--accent-green)';
+                refreshBtn.disabled = false;
+            } else {
+                serviceStatusEl.textContent = 'Stopped';
+                serviceStatusEl.style.color = 'var(--accent-red)';
+                refreshBtn.disabled = true;
+            }
+
+            // Update RCON status
+            if (data.connected) {
+                rconStatusEl.textContent = 'RCON: ✅ Connected';
+                rconStatusEl.style.color = 'var(--accent-green)';
+                rconStatusEl.title = 'RCON Connected to {{ config.host }}:{{ config.telnet_port }}';
+            } else if (data.service_running) {
+                rconStatusEl.textContent = 'RCON: 🔄 Connecting...';
+                rconStatusEl.style.color = 'var(--accent-orange)';
+                rconStatusEl.title = 'RCON Attempting connection to {{ config.host }}:{{ config.telnet_port }}';
+            } else {
+                rconStatusEl.textContent = 'RCON: ❌ Disconnected';
+                rconStatusEl.style.color = 'var(--accent-red)';
+                rconStatusEl.title = 'RCON Not connected to {{ config.host }}:{{ config.telnet_port }}';
+            }
+        })
+        .catch(error => {
+            console.error('Error updating connection status:', error);
+        })
+        .finally(() => {
+            statusUpdateInProgress = false;
+        });
+}
+
+// Smart FTP status updater with progressive states
+function updateFtpConnectionStatus() {
+    const ftpStatusEl = document.getElementById('ftpStatus');
+    
+    fetch('/api/ftp/status')
+        .then(response => response.json())
+        .then(data => {
+            ftpStatusEl.textContent = `FTP: ${data.message}`;
+            ftpStatusEl.style.color = data.color;
+            ftpStatusEl.title = data.tooltip;
+        })
+        .catch(error => {
+            console.error('Error updating FTP status:', error);
+            ftpStatusEl.textContent = 'FTP: ❓ Error';
+            ftpStatusEl.style.color = 'var(--text-secondary)';
+            ftpStatusEl.title = 'Unable to check FTP status';
+        });
+}
+
+// Update status on page load and periodically
+document.addEventListener('DOMContentLoaded', function() {
+    updateConnectionStatus();
+    updateFtpConnectionStatus();
+    
+    // Update every 30 seconds, but stagger the calls
+    setInterval(() => {
+        updateConnectionStatus();
+    }, 30000);
+    
+    setInterval(() => {
+        updateFtpConnectionStatus();
+    }, 31000); // Slightly offset to avoid conflicts
+});
+</script>

@@ -1,0 +1,348 @@
+<!-- FILE LOCATION: /templates/tabs/settings.html -->
+<div class="panel" id="settingsPanel" style="display: none;">
+    <h2>⚙️ Settings</h2>
+    
+    <!-- Konsole-style layout with vertical sidebar -->
+    <div class="konsole-settings-container">
+        <!-- Vertical sidebar (like Konsole) -->
+        <div class="konsole-sidebar">
+            <div class="konsole-search">
+                <input type="text" placeholder="🔍 Search..." class="konsole-search-input" id="settingsSearch">
+            </div>
+            
+            <div class="konsole-nav-list">
+                <div class="konsole-nav-item active" data-target="rcon-settings">
+                    <div class="konsole-nav-icon">🔐</div>
+                    <div class="konsole-nav-label">RCON</div>
+                </div>
+                
+                <div class="konsole-nav-item" data-target="ftp-settings">
+                    <div class="konsole-nav-icon">📁</div>
+                    <div class="konsole-nav-label">FTP Auth</div>
+                </div>
+                
+                <div class="konsole-nav-item" data-target="ftp-paths-settings">
+                    <div class="konsole-nav-icon">🗂️</div>
+                    <div class="konsole-nav-label">FTP Paths</div>
+                </div>
+                
+                <div class="konsole-nav-item" data-target="misc-settings">
+                    <div class="konsole-nav-icon">⚙️</div>
+                    <div class="konsole-nav-label">General</div>
+                </div>
+                
+                <div class="konsole-nav-item" data-target="themes-settings">
+                    <div class="konsole-nav-icon">🎨</div>
+                    <div class="konsole-nav-label">Appearance</div>
+                </div>
+                
+                <div class="konsole-nav-item" data-target="logs-settings">
+                    <div class="konsole-nav-icon">📋</div>
+                    <div class="konsole-nav-label">Logging</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content area (like Konsole) -->
+        <div class="konsole-content">
+            <!-- RCON Settings Panel -->
+            <div class="konsole-content-panel active" id="rcon-settings">
+                <div class="konsole-content-header">
+                    <h3>RCON Connection</h3>
+                    <p>Configure connection to your Empyrion server</p>
+                </div>
+                
+                <div class="konsole-form-section">
+                    <div class="konsole-form-group">
+                        <label for="rconHost">Server Host:</label>
+                        <input type="text" id="rconHost" class="konsole-input" placeholder="192.168.1.100">
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="rconPort">Server Port:</label>
+                        <input type="number" id="rconPort" class="konsole-input" placeholder="30004" min="1" max="65535">
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="rconPassword">RCON Password:</label>
+                        <div class="konsole-password-container">
+                            <input type="password" id="rconPassword" class="konsole-input" placeholder="Enter RCON password">
+                            <button type="button" class="konsole-password-toggle" onclick="SettingsManager.togglePassword('rconPassword')">👁️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="konsole-form-actions">
+                        <button onclick="SettingsManager.testRconConnection()" class="konsole-btn konsole-btn-secondary">Test Connection</button>
+                        <button onclick="SettingsManager.saveRconSettings()" class="konsole-btn konsole-btn-primary">Save RCON Settings</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FTP Authentication Panel -->
+            <div class="konsole-content-panel" id="ftp-settings">
+                <div class="konsole-content-header">
+                    <h3>FTP Authentication</h3>
+                    <p>Configure FTP/SFTP connection credentials. The system automatically detects and supports both FTP and SFTP protocols.</p>
+                </div>
+                
+                <div class="konsole-form-section">
+                    <div class="konsole-form-group">
+                        <label for="ftpHost">FTP Host:</label>
+                        <input type="text" id="ftpHost" class="konsole-input" placeholder="192.168.1.100">
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="ftpPort">FTP Port:</label>
+                        <input type="number" id="ftpPort" class="konsole-input" placeholder="21" min="1" max="65535">
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="ftpUsername">FTP Username:</label>
+                        <input type="text" id="ftpUsername" class="konsole-input" placeholder="Enter FTP username">
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="ftpPassword">FTP Password:</label>
+                        <div class="konsole-password-container">
+                            <input type="password" id="ftpPassword" class="konsole-input" placeholder="Enter FTP password">
+                            <button type="button" class="konsole-password-toggle" onclick="SettingsManager.togglePassword('ftpPassword')">👁️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="konsole-form-actions">
+                        <button onclick="SettingsManager.testFtpConnection()" class="konsole-btn konsole-btn-secondary">Test Connection</button>
+                        <button onclick="SettingsManager.saveFtpAuth()" class="konsole-btn konsole-btn-primary">Save FTP Settings</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FTP Paths Panel -->
+            <div class="konsole-content-panel" id="ftp-paths-settings">
+                <div class="konsole-content-header">
+                    <h3>FTP Path Configuration</h3>
+                    <p>Configure server file paths for different features and modules.</p>
+                </div>
+                
+                <div class="konsole-form-section">
+                    <div class="konsole-form-group">
+                        <label for="itemsConfigPath">ItemsConfig Path:</label>
+                        <div class="konsole-input-group">
+                            <input type="text" id="itemsConfigPath" class="konsole-input" placeholder="/empyrion/Content/Scenarios/Star Salvage - Reborn (v1.12)/Content/Configuration">
+                            <button type="button" class="konsole-btn konsole-btn-secondary konsole-btn-sm" onclick="browseForPath('itemsConfigPath')">📁 Browse</button>
+                        </div>
+                        <small class="konsole-help-text">Path to your scenario's Configuration directory containing ItemsConfig.ecf</small>
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="playfieldsPath">Playfields Path:</label>
+                        <div class="konsole-input-group">
+                            <input type="text" id="playfieldsPath" class="konsole-input" placeholder="/empyrion/Content/Scenarios/Star Salvage - Reborn (v1.12)/Playfields">
+                            <button type="button" class="konsole-btn konsole-btn-secondary konsole-btn-sm" onclick="browseForPath('playfieldsPath')">📁 Browse</button>
+                        </div>
+                        <small class="konsole-help-text">Path to your scenario's Playfields directory for wipe automation</small>
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="modConfigPath">Mod Config Path:</label>
+                        <div class="konsole-input-group">
+                            <input type="text" id="modConfigPath" class="konsole-input" placeholder="/empyrion/Content/Scenarios/Star Salvage - Reborn (v1.12)/Content/Mods/PlayerStatusMod">
+                            <button type="button" class="konsole-btn konsole-btn-secondary konsole-btn-sm" onclick="browseForPath('modConfigPath')">📁 Browse</button>
+                        </div>
+                        <small class="konsole-help-text">Path to your mod directory for automated configuration updates</small>
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="gameoptionsPath">GameOptions Path:</label>
+                        <div class="konsole-input-group">
+                            <input type="text" id="gameoptionsPath" class="konsole-input" placeholder="/empyrion/Content/Scenarios/Star Salvage - Reborn (v1.12)">
+                            <button type="button" class="konsole-btn konsole-btn-secondary konsole-btn-sm" onclick="browseForPath('gameoptionsPath')">📁 Browse</button>
+                        </div>
+                        <small class="konsole-help-text">Path to your scenario directory or full path to gameoptions.yaml file (file will be auto-appended if directory path provided)</small>
+                    </div>
+                    
+                    <div class="konsole-form-actions">
+                        <button onclick="validateFtpPaths()" class="konsole-btn konsole-btn-secondary">Validate Paths</button>
+                        <button onclick="SettingsManager.saveFtpPaths()" class="konsole-btn konsole-btn-primary">Save Paths</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- General Settings Panel -->
+            <div class="konsole-content-panel" id="misc-settings">
+                <div class="konsole-content-header">
+                    <h3>General Settings</h3>
+                    <p>Configure general application behavior</p>
+                </div>
+                
+                <div class="konsole-form-section">
+                    <div class="konsole-form-group">
+                        <label for="updateInterval">Update Interval (seconds):</label>
+                        <input type="number" id="updateInterval" class="konsole-input" placeholder="20" min="10" max="300">
+                        <small class="konsole-help-text">How often to refresh player data (minimum 10 seconds)</small>
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label class="konsole-checkbox-label">
+                            <input type="checkbox" id="enableGeoLocation" class="konsole-checkbox">
+                            <span class="konsole-checkbox-custom"></span>
+                            Enable IP geolocation lookup
+                        </label>
+                    </div>
+                    
+                    <div class="konsole-form-actions">
+                        <button onclick="SettingsManager.resetToDefaults()" class="konsole-btn konsole-btn-danger">Reset to Defaults</button>
+                        <button onclick="SettingsManager.saveGeneralSettings()" class="konsole-btn konsole-btn-primary">Save General Settings</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Appearance Settings Panel -->
+            <div class="konsole-content-panel" id="themes-settings">
+                <div class="konsole-content-header">
+                    <h3>Appearance & Themes</h3>
+                    <p>Customize the visual appearance of the application</p>
+                </div>
+                
+                <div class="konsole-form-section">
+                    <div class="konsole-form-group">
+                        <label>Color Theme:</label>
+                        <div class="theme-selector-container">
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview theme-preview-dark">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-sidebar"></div>
+                                        <div class="theme-preview-main">
+                                            <div class="theme-preview-text"></div>
+                                            <div class="theme-preview-text short"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-info">
+                                    <div class="theme-name">🌙 Dark Theme</div>
+                                    <div class="theme-description">High contrast, reduced eye strain</div>
+                                </div>
+                                <input type="radio" name="theme" value="dark" id="theme-dark" checked>
+                            </div>
+                            
+                            <div class="theme-option" data-theme="light">
+                                <div class="theme-preview theme-preview-light">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-sidebar"></div>
+                                        <div class="theme-preview-main">
+                                            <div class="theme-preview-text"></div>
+                                            <div class="theme-preview-text short"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-info">
+                                    <div class="theme-name">☀️ Light Theme</div>
+                                    <div class="theme-description">Clean, bright appearance</div>
+                                </div>
+                                <input type="radio" name="theme" value="light" id="theme-light">
+                            </div>
+                            
+                            <div class="theme-option" data-theme="accessible">
+                                <div class="theme-preview theme-preview-accessible">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-sidebar"></div>
+                                        <div class="theme-preview-main">
+                                            <div class="theme-preview-text"></div>
+                                            <div class="theme-preview-text short"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-info">
+                                    <div class="theme-name">♿ Accessible Theme</div>
+                                    <div class="theme-description">WCAG 2.1 AAA compliant</div>
+                                </div>
+                                <input type="radio" name="theme" value="accessible" id="theme-accessible">
+                            </div>
+                            
+                            <div class="theme-option" data-theme="blue">
+                                <div class="theme-preview theme-preview-blue">
+                                    <div class="theme-preview-header"></div>
+                                    <div class="theme-preview-content">
+                                        <div class="theme-preview-sidebar"></div>
+                                        <div class="theme-preview-main">
+                                            <div class="theme-preview-text"></div>
+                                            <div class="theme-preview-text short"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-info">
+                                    <div class="theme-name">🌊 Blue Theme</div>
+                                    <div class="theme-description">Professional navy-blue aesthetic</div>
+                                </div>
+                                <input type="radio" name="theme" value="blue" id="theme-blue">
+                            </div>
+                        </div>
+                        <small class="konsole-help-text">Choose a color theme that suits your preference and environment</small>
+                    </div>
+                    
+                    <div class="konsole-form-actions">
+                        <button onclick="ThemeManager.resetToDefault()" class="konsole-btn konsole-btn-secondary">Reset to Default</button>
+                        <button onclick="ThemeManager.cancelThemeChanges()" class="konsole-btn konsole-btn-secondary">Cancel Changes</button>
+                        <button onclick="ThemeManager.saveThemePreference()" class="konsole-btn konsole-btn-primary">Save Theme Preference</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logging Settings Panel -->
+            <div class="konsole-content-panel" id="logs-settings">
+                <div class="konsole-content-header">
+                    <h3>Logging Configuration</h3>
+                    <p>Configure log rotation and cleanup settings</p>
+                </div>
+                
+                <div class="konsole-form-section">
+                    <div class="konsole-form-group">
+                        <label for="maxLogSize">Max Log Size (MB):</label>
+                        <input type="number" id="maxLogSize" class="konsole-input" placeholder="1" min="1" max="50">
+                        <small class="konsole-help-text">Maximum size before log rotation (1-50 MB)</small>
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="backupCount">Backup Log Files:</label>
+                        <input type="number" id="backupCount" class="konsole-input" placeholder="3" min="1" max="10">
+                        <small class="konsole-help-text">Number of backup files to keep (1-10)</small>
+                    </div>
+                    
+                    <div class="konsole-form-group">
+                        <label for="maxLogAge">Max Log Age (days):</label>
+                        <input type="number" id="maxLogAge" class="konsole-input" placeholder="7" min="1" max="30">
+                        <small class="konsole-help-text">Automatically delete logs older than this (1-30 days)</small>
+                    </div>
+                    
+                    <div class="konsole-form-actions">
+                        <button onclick="SettingsManager.cleanupOldLogs()" class="konsole-btn konsole-btn-secondary">Cleanup Old Logs</button>
+                        <button onclick="SettingsManager.saveLoggingSettings()" class="konsole-btn konsole-btn-primary">Save Logging Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Status/Info Panel -->
+    <div class="konsole-status-panel">
+        <div class="konsole-status-section">
+            <h4>📊 Current Status</h4>
+            <div class="konsole-status-grid">
+                <div class="konsole-status-item">
+                    <span class="konsole-status-label">RCON:</span>
+                    <span class="konsole-status-value" id="rconStatus">Not configured</span>
+                </div>
+                <div class="konsole-status-item">
+                    <span class="konsole-status-label">FTP:</span>
+                    <span class="konsole-status-value" id="ftpStatus">Not configured</span>
+                </div>
+                <div class="konsole-status-item">
+                    <span class="konsole-status-label">Last Saved:</span>
+                    <span class="konsole-status-value" id="lastSaved">Never</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

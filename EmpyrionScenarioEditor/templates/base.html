@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Empyrion Scenario Editor{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>🚀 Empyrion Scenario Editor</h1>
+            <p class="subtitle">Design and edit Empyrion Galactic Survival scenarios</p>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- JavaScript -->
+    <!-- Core utilities first -->
+    <script src="{{ url_for('static', filename='js/safe-dom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/simple-logger.js') }}"></script>
+    
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Application modules -->
+    <script src="{{ url_for('static', filename='js/bbcode-parser.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/game-options-config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/game-options-manager.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/galaxy-viewer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/file-browser.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

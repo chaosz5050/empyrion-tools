@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Scenarios - Empyrion Scenario Editor{% endblock %}
+
+{% block content %}
+<div class="file-browser">
+    <div class="file-browser-header">
+        <span class="breadcrumb" id="current-path">Loading...</span>
+        <button class="btn btn-secondary" id="parent-dir-btn">📁 Parent Directory</button>
+        <button class="btn" id="refresh-btn">🔄 Refresh</button>
+    </div>
+    
+    <div class="directory-listing" id="directory-listing">
+        <div class="loading">Loading directory contents...</div>
+    </div>
+</div>
+
+<div class="scenario-preview" id="scenario-preview" style="display: none;">
+    <div class="scenario-preview-header">
+        <h3 id="scenario-name">Scenario Name</h3>
+        <button class="btn btn-secondary" id="back-to-directory-btn">← Back to Directory</button>
+        <div class="scenario-meta">
+            <div class="scenario-meta-item">
+                <span class="label">Game Mode:</span>
+                <span class="value" id="scenario-game-mode">Unknown</span>
+            </div>
+            <div class="scenario-meta-item">
+                <span class="label">Multiplayer Ready:</span>
+                <span class="value" id="scenario-multiplayer">Unknown</span>
+            </div>
+            <div class="scenario-meta-item">
+                <span class="label">Path:</span>
+                <span class="value" id="scenario-path">Unknown</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-navigation">
+        <button class="tab-button active" data-tab="description">📄 Description</button>
+        <button class="tab-button" data-tab="gameoptions">⚙️ Game Options</button>
+        <button class="tab-button" data-tab="structure">📁 Structure</button>
+        <button class="tab-button" data-tab="galaxy">🌌 Galaxy View</button>
+        <button class="tab-button" data-tab="files">📋 All Files</button>
+    </div>
+    
+    <div class="tab-content">
+        <div id="tab-description" class="tab-pane active">
+            <div class="code-block" id="scenario-description">Loading description...</div>
+        </div>
+        
+        <div id="tab-gameoptions" class="tab-pane" style="display: none;">
+            <div class="game-options-container">
+                <div class="game-options-header">
+                    <h4>Game Configuration Options</h4>
+                </div>
+                
+                <div class="game-options-search">
+                    <input type="text" id="options-search" placeholder="Search options..." class="options-search-input">
+                </div>
+                
+                <div id="game-options-content" class="game-options-content">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab-structure" class="tab-pane" style="display: none;">
+            <div id="scenario-structure">
+                <div class="scenario-meta">
+                    <div class="scenario-meta-item">
+                        <span class="label">Playfields:</span>
+                        <span class="value" id="structure-playfields">0</span>
+                    </div>
+                    <div class="scenario-meta-item">
+                        <span class="label">Prefabs:</span>
+                        <span class="value" id="structure-prefabs">0</span>
+                    </div>
+                    <div class="scenario-meta-item">
+                        <span class="label">Custom Content:</span>
+                        <span class="value" id="structure-content">No</span>
+                    </div>
+                    <div class="scenario-meta-item">
+                        <span class="label">Custom Configs:</span>
+                        <span class="value" id="structure-configs">No</span>
+                    </div>
+                </div>
+                <div class="code-block" id="structure-directories" style="margin-top: 16px;">Loading directory structure...</div>
+            </div>
+        </div>
+        
+        <div id="tab-galaxy" class="tab-pane" style="display: none;">
+            <div class="galaxy-viewer-wrapper">
+                <div id="galaxy-viewer-container" class="galaxy-viewer-container">
+                    <!-- Canvas will be inserted here -->
+                </div>
+                <div id="galaxy-loading" class="galaxy-loading">
+                    🌌 Initializing Galaxy Viewer...
+                    <br><small>Loading Three.js and preparing 3D view</small>
+                </div>
+                <div id="galaxy-system-info" class="galaxy-system-info" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div id="tab-files" class="tab-pane" style="display: none;">
+            <div id="scenario-files">Loading file list...</div>
+        </div>
+    </div>
+</div>
+
+<div id="error-message" class="error" style="display: none;"></div>
+<div id="success-message" class="success" style="display: none;"></div>
+{% endblock %}
