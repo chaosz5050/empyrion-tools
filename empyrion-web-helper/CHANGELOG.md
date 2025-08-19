@@ -5,9 +5,16 @@ All notable changes to Empyrion Web Helper will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2025-08-17
+## [Unreleased] - 2025-08-19
 
-### Removed
+### Fixed
+- **Help Commands In-Game Display** - Fixed PlayerStatusMod integration for `/help` command
+  - **Issue** - Help commands loaded correctly in web interface but showed "no help commands defined" in-game
+  - **Root Cause** - Missing `help_command_enabled: true` field in generated PlayerStatusConfig.json
+  - **Solution** - Added required field to config generation in messaging.py
+  - **Result** - `/help` command now properly displays all configured commands in-game
+
+### Removed  
 - **Manual Player Refresh Button** - Removed redundant "🔄 Refresh Players" button from player management
   - **Reason** - Background service automatically updates player data every ~30 seconds via RCON
   - **Result** - Cleaner 4-button layout: Backup DB → Restore DB → Purge → Export CSV

@@ -173,6 +173,7 @@ class MessagingManager:
                 "goodbye_enabled": self.goodbye_enabled,
                 "goodbye_message": self.goodbye_message_template.replace('<playername>', '{playername}'),
                 "scheduled_messages": [],
+                "help_command_enabled": True,
                 "help_commands": self.help_commands if hasattr(self, 'help_commands') else []
             }
             
